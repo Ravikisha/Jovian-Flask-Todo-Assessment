@@ -265,6 +265,12 @@
     font-weight: bold;
     text-decoration: none;
   }
+  .overline{
+    text-decoration: line-through;
+  }
+  .task-list-item-status{
+    margin-left: 1rem; font-size: 1rem; font-weight: bold; background-color: #191933; color: #fff; border: none; cursor: pointer; outline: none; padding: 0.5rem; border-radius: 0.5rem; border: 1px solid #fff;
+  }
 </style>
 <div class="main-todo">
   <div class="profile-card">
@@ -279,6 +285,9 @@
         <div class="profile-detail-item-value">{{ user.email }}</div>
       </div>
       <div class="profile-detail-item">
+        <div class="logout-sec">
+          <a href="/details" class="logout-btn">More</a>
+        </div>
         <div class="logout-sec">
           <a href="/logout" class="logout-btn">Logout</a>
         </div>
@@ -308,15 +317,22 @@
         {% for task in tasks %}
         <li class="task-list-item">
           <label class="task-list-item-label">
-            <input type="checkbox"
-            onclick="window.location.href='/tasks/{{task.id}}/update'" {% if
-            task.status == 'completed' %} checked {% endif %} />
             <div class="text-value">
-              <span style="font-size: 1.2rem; font-weight: bold"
+              <span class="{% if
+                task.status == 'completed' %} overline {% endif %}" style="font-size: 1.2rem; font-weight: bold"
                 >{{task.title}}</span
-              >
-              <span>{{task.description}}</span>
-            </div>
+                >
+                <span class="{% if
+                  task.status == 'completed' %} overline {% endif %}">{{task.description}}</span>
+                </div>
+                <select name="status" id="status" onchange="location = this.value;" class="task-list-item-status">
+                  <option value="/tasks/{{task.id}}/status?status=completed" {% if
+                    task.status == 'completed' %} selected {% endif %}>Completed</option>
+                  <option value="/tasks/{{task.id}}/status?status=holdon" {% if
+                    task.status == 'holdon' %} selected {% endif %}>Hold On</option>
+                  <option value="/tasks/{{task.id}}/status?status=created" {% if
+                    task.status == 'created' %} selected {% endif %}>Not Completed</option>
+                </select>
           </label>
           <a
             class="delete-btn"

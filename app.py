@@ -13,7 +13,6 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = 'thisisasecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL3')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ravi:ukhKm1DjfUe8jvXmR4wmuR67dwJkg1iT@dpg-cfogbf2rrk0fd9osmejg-a.oregon-postgres.render.com/todolist_ibja'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -133,11 +132,32 @@ def updateTask(task_id):
 @app.route('/tasks/clear')
 @login_required
 def clearTasks():
-    tasks = Task.query.filter_by(user_id=current_user.id).all()
+    # tasks = Task.query.filter_by(user_id=current_user.id).all()
+    tasks = Task.query.filter_by(user_id=current_user.id,status='completed').all()
     for task in tasks:
         db.session.delete(task)
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/tasks/<int:task_id>/status')
+@login_required
+def statusTask(task_id):
+    args = request.args
+    update_status = args.get('status')
+    task = Task.query.filter_by(id=task_id).first()
+    task.status = update_status
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/details')
+@login_required
+def details():
+    tasks = Task.query.filter_by(user_id=current_user.id).all()
+    completed_tasks = Task.query.filter_by(user_id=current_user.id,status='completed').all()
+    created_tasks = Task.query.filter_by(user_id=current_user.id,status='created').all()
+    holdon_tasks = Task.query.filter_by(user_id=current_user.id,status='holdon').all()
+    max_category = max(len(completed_tasks),len(created_tasks),len(holdon_tasks))
+    return render_template('more.html',user=current_user, tasks=tasks, completed_tasks=completed_tasks, created_tasks=created_tasks, holdon_tasks=holdon_tasks, max_category=max_category)
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True,port=5000)

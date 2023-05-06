@@ -13,6 +13,9 @@
 <hr>
 ## Project Link:
 [Source Code](https://github.com/Ravikisha/jovian_assessment_flask)
+
+## Deployed Link:
+[Deployed Link](https://todolist-u71i.onrender.com/)
 <hr>
 ## Project Stack:
 - Python
