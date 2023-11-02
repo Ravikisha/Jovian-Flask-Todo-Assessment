@@ -1,4 +1,9 @@
-![Poster](docs/poster.jpg)
+<div style="display:flex;">
+<img width="250" src="./docs/poster2.jpeg">
+<img width="250" src="./docs/poster3.jpeg">
+<img width="250" src="./docs/poster4.jpeg">
+
+</div>
 
 # Jovian Flask Todo Assessment 💼
 
@@ -20,13 +25,15 @@ This is a simple ToDo List App developed for the Jovian Web Development Course. 
 - [Source Code](https://github.com/Ravikisha/jovian_assessment_flask) [![GitHub](https://img.shields.io/badge/GitHub-Repository-green)](https://github.com/Ravikisha/jovian_assessment_flask)
 - [Deployed Link](https://todo-list-4bhz.onrender.com/) [![Website](https://img.shields.io/badge/Website-Deployed-brightgreen)](https://todo-list-4bhz.onrender.com/)
 
-## Project Stack 🛠️
 
-- Python
-- Flask
-- Sqlalchemy
-- Tailwindcss
-- Bootstrap
+<p>
+<h2>Project Stack</h2>
+<img src="https://img.shields.io/badge/Python-3.9.6-blue" alt="Python" />
+<img src="https://img.shields.io/badge/Flask-2.0.1-blue" alt="Flask" />
+<img src="https://img.shields.io/badge/Sqlalchemy-1.4.23-blue" alt="Sqlalchemy" />
+<img src="https://img.shields.io/badge/Tailwindcss-2.2.7-blue" alt="Tailwindcss" />
+<img src="https://img.shields.io/badge/Bootstrap-5.1.0-blue" alt="Bootstrap" />
+</p>
 
 ## Installation Steps 🚀
 
