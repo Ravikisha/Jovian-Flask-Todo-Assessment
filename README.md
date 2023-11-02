@@ -1,3 +1,5 @@
+![Poster](docs/poster.jpg)
+
 # Jovian Flask Todo Assessment 💼
 
 ## Project Name: ToDo List ✅
@@ -75,6 +77,14 @@ To run this project locally, follow these steps:
 6. **Access the App:**
 
    Open your web browser and go to `http://localhost:5000` to use the ToDo List App.
+
+
+## Project Screenshots 📷
+![Login Page](./docs/docs1.png)
+![Signup Page](./docs/docs2.png)
+![Home Page](./docs/docs3.png)
+![Add Todo Page](./docs/docs4.png)
+![More Details Page](./docs/docs5.png)
 
 ## Contribution
 
